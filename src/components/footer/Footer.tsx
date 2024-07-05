@@ -1,3 +1,4 @@
+import { FacebookLogo, InstagramLogo } from '@phosphor-icons/react'
 import React from 'react'
 
 function Footer() {
@@ -7,6 +8,10 @@ function Footer() {
               <p className='text-xl font-bold'>Todos os direitos reservados:</p>
               <p className='text-lg'>Farmácia Leonardo</p>
               <p className='text-lg'>Acesse as nossa redes sociais</p>
+              <div className='flex gap-2'>
+              <InstagramLogo size={48} weight='bold' />
+              <FacebookLogo size={48} weight='bold' />
+              </div>
            </div>
         </div>
   )

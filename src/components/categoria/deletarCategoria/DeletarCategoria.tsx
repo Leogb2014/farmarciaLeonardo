@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Categoria from '../../../models/Categoria'
 import { useNavigate, useParams } from 'react-router-dom'
 import { buscar, deletar } from '../../../services/Service'
+import { toastAlerta } from '../../../utils/toastAlerta'
 
 function DeletarCategoria() {
 
@@ -12,29 +13,38 @@ function DeletarCategoria() {
     const navigate = useNavigate();
 
     
-   async function buscaPorId(id: string) {
+   async function buscarPorId(id: string) {
     await buscar(`/categorias/${id}`, setCategoria)
    }
+
+   useEffect(() => {
+    if (id !== undefined) {
+        buscarPorId(id)
+    }
+  }, [id])
 
    async function deletarCategoria(){
     try{
         await deletar(`/categorias/${id}`)
+
+        toastAlerta('Categoria deletada com sucesso', 'sucesso')
+        retornar()
     }catch(Error: any){
-        alert("Erro ao deletar categoria")
+        toastAlerta("Erro ao deletar categoria", 'erro')
     }
    }
 
    function retornar() {
-    navigate("/temas")
+    navigate("/categorias")
   }
 
 
 
   return (
     <div className='container w-1/3 mx-auto'>
-    <h1 className='text-4xl text-center my-4'>Deletar tema</h1>
+    <h1 className='text-4xl text-center my-4'>Deletar Categoria</h1>
 
-    <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar o tema a seguir?</p>
+    <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar a Categoria a seguir?</p>
 
     <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
     <header className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>Categoria</header>

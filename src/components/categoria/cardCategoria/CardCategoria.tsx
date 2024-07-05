@@ -19,9 +19,9 @@ function CardCategoria({categoria}: CardCategoriaProps) {
         <Link to={`/editarCategoria/${categoria.id}`} className='w-full text-slate-100 bg-blue-900 hover:bg-blue-500 flex items-center justify-center py-2'>
           <button>Editar</button>
         </Link>
-        <div className='text-slate-100 bg-red-800 hover:bg-red-400 w-full flex items-center justify-center'>
+        <Link to={`/deletarCategoria/${categoria.id}`} className='text-slate-100 bg-red-800 hover:bg-red-400 w-full flex items-center justify-center'>
           <button>Deletar</button>
-        </div>
+        </Link>
         </div>
 
    </div>

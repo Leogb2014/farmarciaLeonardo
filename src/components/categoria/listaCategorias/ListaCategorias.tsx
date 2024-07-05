@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { buscar } from '../../../services/Service'
 import Categoria from '../../../models/Categoria';
 import CardCategoria from '../cardCategoria/CardCategoria';
+import { toastAlerta } from '../../../utils/toastAlerta';
 
 function ListaCategorias() {
 
@@ -12,7 +13,7 @@ function ListaCategorias() {
         try{
             await buscar('/categorias', setCategorias);
         }catch(error: any){
-            alert('Erro ao buscar categorias')
+            toastAlerta('Erro ao buscar categorias', 'erro')
         }
        }
     
